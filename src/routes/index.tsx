@@ -193,7 +193,7 @@ const BODY = `
       <input class="field" placeholder="WhatsApp (com DDD)">
       <textarea class="field" rows="3" placeholder="O que te traz aqui? (à vontade pra escrever pouco)"></textarea>
       <a href="${WA}" target="_blank" rel="noreferrer" class="btn btn-wa w-full text-lg">Agendar pelo WhatsApp →</a>
-      <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="btn btn-petrol w-full" data-pending="doctoralia-url">Ou agendar na Doctoralia</a>
+      <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="btn btn-petrol w-full">Ou agendar na Doctoralia</a>
       <p class="text-xs text-center text-[color:var(--muted)]">🔒 Suas informações são tratadas com sigilo profissional.</p>
     </form>
   </section>
@@ -219,7 +219,7 @@ const BODY = `
         <ul class="space-y-2 text-sm text-[color:var(--muted)]">
           <li>📱 <a href="${WA}" target="_blank" rel="noreferrer" class="hover:text-[color:var(--ink)]">(51) 98448-5585</a></li>
           <li>📷 <a href="${INSTAGRAM}" target="_blank" rel="noreferrer" class="hover:text-[color:var(--ink)]">@eduardooliveirasilveirapsi</a></li>
-          <li>🩺 <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="hover:text-[color:var(--ink)]" data-pending="doctoralia-url">Doctoralia</a></li>
+          <li>🩺 <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="hover:text-[color:var(--ink)]">Doctoralia</a></li>
           <li>📍 Porto Alegre/RS · online em todo Brasil</li>
         </ul>
       </div>
