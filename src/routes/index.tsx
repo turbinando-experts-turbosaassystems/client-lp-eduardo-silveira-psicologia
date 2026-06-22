@@ -80,7 +80,7 @@ const BODY = `
       <p class="reveal text-lg md:text-xl text-[color:var(--muted)] max-w-xl mt-7 leading-relaxed">Psicoterapia clínica de orientação Junguiana para jovens, adultos e idosos. Uma escuta profunda e sem julgamentos pra você atravessar o estresse, a ansiedade e as cobranças do mundo — e se aproximar, no seu tempo, da sua verdadeira essência.</p>
       <div class="reveal flex flex-col sm:flex-row gap-4 mt-10">
         <a href="${WA}" target="_blank" rel="noreferrer" class="btn btn-wa">Agendar pelo WhatsApp →</a>
-        <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="btn btn-petrol" data-pending="doctoralia-url">Agendar na Doctoralia</a>
+        <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="btn btn-petrol">Agendar na Doctoralia</a>
       </div>
       <div class="reveal flex flex-wrap items-center gap-3 mt-8 text-sm">
         <span class="badge">🪪 ${CRP}</span>
@@ -154,7 +154,7 @@ const BODY = `
         <div class="petroltext text-xs font-bold tracking-wider mb-3">PRESENÇA VALIDADA</div>
         <h3 class="serif text-2xl">Também na Doctoralia</h3>
         <p class="leading-relaxed mt-3 text-[color:var(--muted)]">Perfil ativo na Doctoralia com agendamento aberto — a plataforma valida a atuação profissional do Psicólogo Eduardo Silveira dos Santos em Porto Alegre.</p>
-        <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 mt-5 font-bold petroltext" data-pending="doctoralia-url">Ver perfil →</a>
+        <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 mt-5 font-bold petroltext">Ver perfil →</a>
       </div>
     </div>
   </section>
