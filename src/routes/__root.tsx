@@ -77,19 +77,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Eduardo Silveira — Psicoterapia Junguiana" },
+      { name: "description", content: "Psicoterapia clínica de orientação Junguiana em Porto Alegre. Atendimento online e presencial com Eduardo Silveira dos Santos." },
+      { property: "og:title", content: "Eduardo Silveira — Psicoterapia Junguiana" },
+      { property: "og:description", content: "Psicoterapia clínica de orientação Junguiana em Porto Alegre. Atendimento online e presencial." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: "@eduardosilveira" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Eduardo Silveira — Psicoterapia Junguiana",
+          url: "/",
+          description: "Psicoterapia clínica de orientação Junguiana em Porto Alegre. Atendimento online e presencial.",
+        }),
       },
     ],
   }),
@@ -101,7 +112,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
