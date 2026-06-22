@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
+import { getRequestOrigin } from "@/lib/origin.functions";
 import eduardoPerfil from "@/assets/eduardo-perfil.jpg.asset.json";
 
 const PHOTO = eduardoPerfil.url;
