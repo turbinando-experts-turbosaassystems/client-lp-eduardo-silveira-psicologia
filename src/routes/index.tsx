@@ -4,8 +4,7 @@ import eduardoPerfil from "@/assets/eduardo-perfil.jpg.asset.json";
 
 const PHOTO = eduardoPerfil.url;
 const WA = "https://wa.me/5551984485585?text=Ol%C3%A1%2C%20Eduardo!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20conversa.";
-// PENDENTE: substituir pela URL real do perfil na Doctoralia
-const DOCTORALIA = "https://www.doctoralia.com.br/";
+const DOCTORALIA = "https://www.doctoralia.com.br/eduardo-silveira-dos-santos/psicologo/porto-alegre";
 const INSTAGRAM = "https://instagram.com/eduardooliveirasilveirapsi";
 // PENDENTE: número de CRP completo (ex.: CRP 07/00000)
 const CRP = "CRP 07/00000";
@@ -81,7 +80,7 @@ const BODY = `
       <p class="reveal text-lg md:text-xl text-[color:var(--muted)] max-w-xl mt-7 leading-relaxed">Psicoterapia clínica de orientação Junguiana para jovens, adultos e idosos. Uma escuta profunda e sem julgamentos pra você atravessar o estresse, a ansiedade e as cobranças do mundo — e se aproximar, no seu tempo, da sua verdadeira essência.</p>
       <div class="reveal flex flex-col sm:flex-row gap-4 mt-10">
         <a href="${WA}" target="_blank" rel="noreferrer" class="btn btn-wa">Agendar pelo WhatsApp →</a>
-        <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="btn btn-petrol" data-pending="doctoralia-url">Agendar na Doctoralia</a>
+        <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="btn btn-petrol">Agendar na Doctoralia</a>
       </div>
       <div class="reveal flex flex-wrap items-center gap-3 mt-8 text-sm">
         <span class="badge">🪪 ${CRP}</span>
@@ -155,7 +154,7 @@ const BODY = `
         <div class="petroltext text-xs font-bold tracking-wider mb-3">PRESENÇA VALIDADA</div>
         <h3 class="serif text-2xl">Também na Doctoralia</h3>
         <p class="leading-relaxed mt-3 text-[color:var(--muted)]">Perfil ativo na Doctoralia com agendamento aberto — a plataforma valida a atuação profissional do Psicólogo Eduardo Silveira dos Santos em Porto Alegre.</p>
-        <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 mt-5 font-bold petroltext" data-pending="doctoralia-url">Ver perfil →</a>
+        <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 mt-5 font-bold petroltext">Ver perfil →</a>
       </div>
     </div>
   </section>
@@ -194,7 +193,7 @@ const BODY = `
       <input class="field" placeholder="WhatsApp (com DDD)">
       <textarea class="field" rows="3" placeholder="O que te traz aqui? (à vontade pra escrever pouco)"></textarea>
       <a href="${WA}" target="_blank" rel="noreferrer" class="btn btn-wa w-full text-lg">Agendar pelo WhatsApp →</a>
-      <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="btn btn-petrol w-full" data-pending="doctoralia-url">Ou agendar na Doctoralia</a>
+      <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="btn btn-petrol w-full">Ou agendar na Doctoralia</a>
       <p class="text-xs text-center text-[color:var(--muted)]">🔒 Suas informações são tratadas com sigilo profissional.</p>
     </form>
   </section>
@@ -220,7 +219,7 @@ const BODY = `
         <ul class="space-y-2 text-sm text-[color:var(--muted)]">
           <li>📱 <a href="${WA}" target="_blank" rel="noreferrer" class="hover:text-[color:var(--ink)]">(51) 98448-5585</a></li>
           <li>📷 <a href="${INSTAGRAM}" target="_blank" rel="noreferrer" class="hover:text-[color:var(--ink)]">@eduardooliveirasilveirapsi</a></li>
-          <li>🩺 <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="hover:text-[color:var(--ink)]" data-pending="doctoralia-url">Doctoralia</a></li>
+          <li>🩺 <a href="${DOCTORALIA}" target="_blank" rel="noreferrer" class="hover:text-[color:var(--ink)]">Doctoralia</a></li>
           <li>📍 Porto Alegre/RS · online em todo Brasil</li>
         </ul>
       </div>
