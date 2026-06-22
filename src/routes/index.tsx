@@ -231,14 +231,74 @@ const BODY = `
 `;
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Eduardo Silveira — Psicólogo Junguiano em Porto Alegre · Online e presencial" },
-      { name: "description", content: "Psicoterapia clínica de orientação Junguiana com Eduardo Silveira dos Santos. Escuta acolhedora e sem julgamentos para adultos, jovens e idosos. Atendimento online e presencial em Porto Alegre." },
-      { property: "og:title", content: "Eduardo Silveira — Psicólogo Clínico Junguiano (POA)" },
-      { property: "og:description", content: "Um espaço pra escutar quem você realmente é. Psicoterapia Junguiana online e presencial em Porto Alegre." },
-    ],
-  }),
+  loader: async () => {
+    const origin = await getRequestOrigin();
+    return { origin };
+  },
+  head: ({ loaderData }) => {
+    const origin = loaderData?.origin ?? "";
+    const imageUrl = origin ? `${origin}${PHOTO}` : PHOTO;
+    const title = "Eduardo Silveira — Psicólogo Junguiano em Porto Alegre";
+    const description = "Psicoterapia clínica de orientação Junguiana para adultos, jovens e idosos. Atendimento online e presencial em Porto Alegre com Eduardo Silveira dos Santos, CRP 07/36443.";
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { name: "keywords", content: "psicólogo junguiano porto alegre, psicoterapia junguiana, psicólogo online, terapia ansiedade porto alegre, psicólogo adultos idosos, psicologia analítica jung" },
+        { name: "author", content: "Eduardo Silveira dos Santos" },
+        { name: "robots", content: "index, follow" },
+        { name: "geo.region", content: "BR-RS" },
+        { name: "geo.placename", content: "Porto Alegre" },
+        { name: "geo.position", content: "-30.0346;-51.2177" },
+        { name: "ICBM", content: "-30.0346, -51.2177" },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: "/" },
+        { property: "og:image", content: imageUrl },
+        { property: "og:image:alt", content: "Eduardo Silveira dos Santos, psicólogo clínico junguiano em Porto Alegre" },
+        { property: "og:locale", content: "pt_BR" },
+        { property: "og:site_name", content: "Eduardo Silveira — Psicoterapia Junguiana" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: imageUrl },
+        { name: "twitter:image:alt", content: "Eduardo Silveira dos Santos, psicólogo clínico junguiano em Porto Alegre" },
+      ],
+      links: [{ rel: "canonical", href: "/" }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "Eduardo Silveira dos Santos — Psicólogo Junguiano",
+            description: "Psicoterapia clínica de orientação Junguiana para adultos, jovens e idosos. Atendimento online e presencial.",
+            url: origin || "/",
+            image: imageUrl,
+            telephone: "+5551984485585",
+            priceRange: "R$",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Rua Cesar Lombroso",
+              addressLocality: "Porto Alegre",
+              addressRegion: "RS",
+              addressCountry: "BR",
+            },
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: -30.0346,
+              longitude: -51.2177,
+            },
+            sameAs: [
+              DOCTORALIA,
+              INSTAGRAM,
+            ],
+          }),
+        },
+      ],
+    };
+  },
   component: Index,
 });
 
