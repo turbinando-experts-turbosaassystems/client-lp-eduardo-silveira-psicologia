@@ -92,7 +92,7 @@ const BODY = `
   </header>
 
   <section class="container py-24">
-    <div class="reveal max-w-2xl"><div class="kicker mb-6">Talvez você reconheça isso</div><h2 class="display text-5xl md:text-6xl">Cumprindo papéis, longe de si.</h2></div>
+    <div class="reveal max-w-2xl"><div class="kicker mb-6">Talvez Você Reconheça Isso</div><h2 class="display text-5xl md:text-6xl">Cumprindo papéis, longe de si.</h2></div>
     <div class="grid md:grid-cols-3 gap-5 mt-14">
       <div class="reveal card p-8"><div class="text-3xl mb-3">🌀</div><h3 class="text-xl font-bold serif">Ansiedade que não desliga</h3><p class="text-[color:var(--muted)] mt-3 leading-relaxed">A rotina aperta, o trabalho cobra, o corpo avisa. Aqui a gente investiga o que esse sintoma quer dizer — não só como silenciá-lo.</p></div>
       <div class="reveal card p-8"><div class="text-3xl mb-3">🎭</div><h3 class="text-xl font-bold serif">Vivendo pra agradar</h3><p class="text-[color:var(--muted)] mt-3 leading-relaxed">Expectativas da família, do trabalho, do que "deveria" ser. Quando o papel imposto sufoca, a terapia abre espaço pra você se diferenciar.</p></div>
