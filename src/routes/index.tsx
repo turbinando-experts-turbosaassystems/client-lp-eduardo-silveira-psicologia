@@ -4,8 +4,7 @@ import eduardoPerfil from "@/assets/eduardo-perfil.jpg.asset.json";
 
 const PHOTO = eduardoPerfil.url;
 const WA = "https://wa.me/5551984485585?text=Ol%C3%A1%2C%20Eduardo!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20conversa.";
-// PENDENTE: substituir pela URL real do perfil na Doctoralia
-const DOCTORALIA = "https://www.doctoralia.com.br/";
+const DOCTORALIA = "https://www.doctoralia.com.br/eduardo-silveira-dos-santos/psicologo/porto-alegre";
 const INSTAGRAM = "https://instagram.com/eduardooliveirasilveirapsi";
 // PENDENTE: número de CRP completo (ex.: CRP 07/00000)
 const CRP = "CRP 07/00000";
