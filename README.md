@@ -26,7 +26,7 @@ Neste estágio, o projeto pode incluir:
 - seção de apresentação profissional;
 - descrição de serviços ou áreas de atuação;
 - chamadas para ação;
-- botão ou fluxo de contato;
+- botão ou fluxo de contato.
 - estrutura visual adaptada para dispositivos móveis.
 
 ## Estrutura do repositório
