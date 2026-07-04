@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getRequestOrigin } from "@/lib/origin.functions";
 import eduardoPerfil from "@/assets/eduardo-perfil.jpg.asset.json";
+import { Sun, Moon, Menu, X } from "lucide-react";
 
 const PHOTO = eduardoPerfil.url;
 const WA = "https://wa.me/5551984485585?text=Ol%C3%A1%2C%20Eduardo!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20conversa.";
@@ -11,7 +12,8 @@ const CRP = "CRP 07/36443";
 
 const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Nunito+Sans:wght@400;500;600;700&display=swap');
 
-  :root{--bg:#F7F5F0;--bg2:#EDEAE3;--ink:#1A1A2E;--muted:#5A6B7A;--sage:#6F907E;--sage2:#4A6B5D;--petrol:#2C4A5E;--terra:#c98a63;--line:#E3DED3}
+  :root{--bg:#F7F5F0;--bg2:#EDEAE3;--card-bg:#ffffff;--ink:#1A1A2E;--muted:#5A6B7A;--sage:#6F907E;--sage2:#4A6B5D;--petrol:#2C4A5E;--terra:#c98a63;--line:#E3DED3}
+  .dark{--bg:#111116;--bg2:#1d1d29;--card-bg:#161622;--ink:#f3f3f6;--muted:#a0afb7;--sage:#7fa694;--sage2:#5c8874;--petrol:#446a84;--terra:#e2a581;--line:#262635}
   *{box-sizing:border-box}html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:"Nunito Sans",sans-serif;overflow-x:hidden}
   .serif{font-family:"Fraunces",serif}
@@ -36,20 +38,18 @@ const CSS = `@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital
   .btn-petrol:hover{transform:translateY(-2px)}
   .btn-ghost{border:1px solid rgba(26,26,46,.18);color:var(--ink)}.btn-ghost:hover{background:rgba(26,26,46,.04)}
   .reveal{opacity:1}.reveal.in{animation:rin .8s cubic-bezier(.16,1,.3,1) both}@keyframes rin{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-  .card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 34px rgba(26,26,46,.04)}
+  .card{background:var(--card-bg);border:1px solid var(--line);border-radius:20px;box-shadow:0 10px 34px rgba(26,26,46,.04)}
   .hair{height:1px;background:linear-gradient(90deg,transparent,rgba(44,74,94,.35),transparent)}
   .frame{border-radius:24px;overflow:hidden;position:relative;box-shadow:0 40px 90px rgba(44,74,94,.18)}
-  .navwrap{position:fixed;top:14px;left:0;right:0;z-index:40;transition:.3s}
-  .navwrap.s{top:9px}
-  .navwrap>div{background:color-mix(in srgb,var(--bg) 62%,transparent);-webkit-backdrop-filter:saturate(1.5) blur(18px);backdrop-filter:saturate(1.5) blur(18px);border:1px solid color-mix(in srgb,var(--ink) 10%,transparent);border-radius:20px;box-shadow:0 10px 30px rgba(44,74,94,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:.3s}
-  .navwrap.s>div{background:color-mix(in srgb,var(--bg) 84%,transparent)}
+  .navwrap{position:fixed;top:0;left:0;right:0;z-index:40;transition:.3s}
+  .navwrap>div{background:color-mix(in srgb,var(--bg) 80%,transparent);-webkit-backdrop-filter:saturate(1.5) blur(18px);backdrop-filter:saturate(1.5) blur(18px);border-bottom:1px solid color-mix(in srgb,var(--line) 50%,transparent);box-shadow:0 4px 20px rgba(0,0,0,0.03);transition:.3s}
   .mark{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--petrol),#1B3245);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-family:"Fraunces",serif}
   details.faq{border-bottom:1px solid var(--line)}
   details.faq summary{list-style:none;cursor:pointer;padding:20px 4px;display:flex;justify-content:space-between;gap:16px;align-items:center;font-weight:700;font-size:17px}
   details.faq summary::-webkit-details-marker{display:none}
   details.faq[open] .pl{transform:rotate(45deg)} .pl{transition:.3s;color:var(--sage2);font-size:24px;font-family:"Fraunces",serif}
-  .field{width:100%;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;color:var(--ink);outline:none;font-size:15px}.field:focus{border-color:var(--sage2)}
-  .wa{position:fixed;right:20px;bottom:20px;z-index:45;display:flex;align-items:center;gap:10px;padding:13px 18px 13px 14px;border-radius:999px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 16px 40px rgba(37,211,102,.45)}
+  .field{width:100%;background:var(--card-bg);border:1px solid var(--line);border-radius:14px;padding:14px 16px;color:var(--ink);outline:none;font-size:15px}.field:focus{border-color:var(--sage2)}
+  .wa{position:fixed;right:20px;bottom:20px;z-index:45;display:flex;align-items:center;gap:10px;padding:13px 18px 13px 14px;border-radius:999px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-weight:700;font-size:14px;text-decoration:none;box-shadow:0 16px 40px rgba(37,211,102,.45);transition: all 0.3s ease}
   .wa .ic{width:24px;height:24px;display:flex;align-items:center;justify-content:center}
   .wa::before{content:"";position:absolute;left:14px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.5);animation:pr 2s infinite}
   @keyframes pr{0%{transform:translateY(-50%) scale(.6);opacity:.7}70%,100%{transform:translateY(-50%) scale(1.8);opacity:0}}
@@ -61,18 +61,6 @@ const BODY = `
 <div class="cine"><div class="l l1"></div><div class="l l2"></div></div>
 
 <div class="wrap">
-  <nav class="navwrap" id="nav"><div class="container flex items-center justify-between h-[64px] px-5">
-    <a href="#topo" class="flex items-center gap-3"><span class="mark">E</span><span class="serif text-xl">Eduardo Silveira</span></a>
-    <div class="hidden md:flex items-center gap-7 text-sm text-[color:var(--muted)]">
-      <a href="#ajudo" class="hover:text-[color:var(--ink)] transition">Como ajudo</a>
-      <a href="#sobre" class="hover:text-[color:var(--ink)] transition">Sobre mim</a>
-      <a href="#como" class="hover:text-[color:var(--ink)] transition">Como funciona</a>
-      <a href="#casos" class="hover:text-[color:var(--ink)] transition">Casos</a>
-      <a href="#faq" class="hover:text-[color:var(--ink)] transition">FAQ</a>
-    </div>
-    <a href="${WA}" target="_blank" rel="noreferrer" class="btn btn-wa !py-2.5 !px-5 !text-sm">Agendar no WhatsApp</a>
-  </div></nav>
-
   <header id="topo" class="container pt-36 pb-20 md:pt-44 md:pb-28 grid lg:grid-cols-[1.05fr_.95fr] gap-14 items-center">
     <div>
       <div class="reveal kicker">🌿 Psicoterapia Junguiana · Online e presencial em Porto Alegre</div>
@@ -198,7 +186,7 @@ const BODY = `
     </form>
   </section>
 
-  <footer class="border-t border-[color:var(--line)]" style="background:#fff">
+  <footer class="border-t border-[color:var(--line)]" style="background:var(--card-bg)">
     <div class="container py-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
       <div class="lg:col-span-2">
         <div class="flex items-center gap-3"><span class="mark">E</span><span class="serif text-xl">Eduardo Silveira</span></div>
@@ -227,8 +215,6 @@ const BODY = `
     <div class="container pb-8"><div class="hair mb-6"></div><div class="flex flex-col sm:flex-row justify-between gap-3 text-xs text-[color:var(--muted)]"><span>© 2026 Eduardo Silveira dos Santos · ${CRP}</span><span>Atendimento ético conforme CFP</span></div></div>
   </footer>
 </div>
-
-<a href="${WA}" target="_blank" rel="noreferrer" class="wa"><span class="ic">●</span><span>Falar no WhatsApp</span></a>
 `;
 
 export const Route = createFileRoute("/")({
@@ -304,6 +290,28 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("theme");
+      if (saved === "light" || saved === "dark") return saved;
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      return prefersDark ? "dark" : "light";
+    }
+    return "light";
+  });
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   useEffect(() => {
     const io = new IntersectionObserver(
       (es) =>
@@ -317,8 +325,7 @@ function Index() {
     );
     document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
     const onScroll = () => {
-      const n = document.getElementById("nav");
-      if (n) n.classList.toggle("s", window.scrollY > 20);
+      setIsScrolled(window.scrollY > 20);
     };
     addEventListener("scroll", onScroll, { passive: true });
     return () => {
@@ -326,10 +333,94 @@ function Index() {
       removeEventListener("scroll", onScroll);
     };
   }, []);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
+      
+      {/* NAVBAR REATIVA */}
+      <nav id="nav" className={`navwrap fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${isScrolled ? "py-2" : "py-4 md:py-5"}`}>
+        <div className="w-full bg-[color:var(--bg)]/80 dark:bg-[#111116]/80 backdrop-blur-md border-b border-[color:var(--line)]/40 dark:border-[#262635]/40 shadow-sm transition-all duration-300">
+          <div className="container flex items-center justify-between h-[64px] px-5">
+            {/* Logo */}
+            <a href="#topo" className="flex items-center gap-3 select-none">
+              <span className="mark shrink-0">E</span>
+              <span className="serif text-lg md:text-xl font-semibold tracking-tight leading-[1.1] text-[color:var(--ink)] flex flex-col md:flex-row md:gap-1.5">
+                <span>Eduardo</span>
+                <span>Silveira</span>
+              </span>
+            </a>
+
+            {/* Links Desktop */}
+            <div className="hidden md:flex items-center gap-7 text-sm text-[color:var(--muted)] font-medium">
+              <a href="#ajudo" className="hover:text-[color:var(--ink)] transition-colors">Como ajudo</a>
+              <a href="#sobre" className="hover:text-[color:var(--ink)] transition-colors">Sobre mim</a>
+              <a href="#como" className="hover:text-[color:var(--ink)] transition-colors">Como funciona</a>
+              <a href="#casos" className="hover:text-[color:var(--ink)] transition-colors">Casos</a>
+              <a href="#faq" className="hover:text-[color:var(--ink)] transition-colors">FAQ</a>
+            </div>
+
+            {/* Ações Navbar */}
+            <div className="flex items-center gap-3">
+              {/* Alternador de Tema */}
+              <button
+                onClick={toggleTheme}
+                className="p-2.5 rounded-xl border border-[color:var(--line)] dark:border-[#262635] text-[color:var(--ink)] hover:bg-[color:var(--bg2)] dark:hover:bg-[#1d1d29] transition-all cursor-pointer"
+                aria-label="Alternar tema"
+                title={theme === "light" ? "Ativar Modo Escuro" : "Ativar Modo Claro"}
+              >
+                {theme === "light" ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+              </button>
+
+              {/* Botão de Agendamento Desktop */}
+              <a href={WA} target="_blank" rel="noreferrer" className="btn btn-wa !py-2 !px-4 !text-xs md:!text-sm hidden sm:inline-flex select-none">
+                Agendar no WhatsApp
+              </a>
+
+              {/* Botão Menu Hambúrguer Mobile */}
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="p-2.5 rounded-xl border border-[color:var(--line)] dark:border-[#262635] text-[color:var(--ink)] hover:bg-[color:var(--bg2)] dark:hover:bg-[#1d1d29] transition-all cursor-pointer md:hidden"
+                aria-label="Abrir menu"
+              >
+                {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Menu Mobile */}
+        <div className={`fixed inset-x-0 top-[80px] bg-[color:var(--bg)]/95 dark:bg-[#111116]/95 backdrop-blur-lg border-b border-[color:var(--line)]/60 dark:border-[#262635]/60 flex flex-col p-6 gap-4 md:hidden transition-all duration-300 z-30 shadow-md ${
+          isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"
+        }`}>
+          <a href="#ajudo" onClick={() => setIsOpen(false)} className="hover:text-[color:var(--ink)] text-lg landscape:text-sm font-semibold text-[color:var(--ink)] border-b border-[color:var(--line)]/30 dark:border-[#262635]/30 pb-2">Como ajudo</a>
+          <a href="#sobre" onClick={() => setIsOpen(false)} className="hover:text-[color:var(--ink)] text-lg landscape:text-sm font-semibold text-[color:var(--ink)] border-b border-[color:var(--line)]/30 dark:border-[#262635]/30 pb-2">Sobre mim</a>
+          <a href="#como" onClick={() => setIsOpen(false)} className="hover:text-[color:var(--ink)] text-lg landscape:text-sm font-semibold text-[color:var(--ink)] border-b border-[color:var(--line)]/30 dark:border-[#262635]/30 pb-2">Como funciona</a>
+          <a href="#casos" onClick={() => setIsOpen(false)} className="hover:text-[color:var(--ink)] text-lg landscape:text-sm font-semibold text-[color:var(--ink)] border-b border-[color:var(--line)]/30 dark:border-[#262635]/30 pb-2">Casos</a>
+          <a href="#faq" onClick={() => setIsOpen(false)} className="hover:text-[color:var(--ink)] text-lg landscape:text-sm font-semibold text-[color:var(--ink)] border-b border-[color:var(--line)]/30 dark:border-[#262635]/30 pb-2">FAQ</a>
+          <a href={WA} target="_blank" rel="noreferrer" className="btn btn-wa w-full text-center py-3 mt-2 text-sm select-none">
+            Agendar no WhatsApp
+          </a>
+        </div>
+      </nav>
+
+      {/* CONTEÚDO PRINCIPAL */}
       <div dangerouslySetInnerHTML={{ __html: BODY }} />
+
+      {/* BOTÃO DO WHATSAPP REATIVO RESPONSIVO */}
+      <a
+        href={WA}
+        target="_blank"
+        rel="noreferrer"
+        className="wa landscape:right-4 landscape:bottom-4 landscape:py-1.5 landscape:px-3 landscape:text-xs landscape:gap-1.5 landscape:shadow-sm"
+      >
+        <span className="ic landscape:w-4 landscape:h-4">●</span>
+        <span>Falar no WhatsApp</span>
+      </a>
     </>
   );
 }
