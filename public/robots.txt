@@ -1,4 +1,20 @@
 User-agent: *
 Allow: /
 
-Disallow: /lovable/
+# AI Crawlers — permitir citacao em respostas de IA
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+Sitemap: https://eduardo-silveira-psc.netlify.app/sitemap.xml
