@@ -17,4 +17,4 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
-Sitemap: https://eduardo-silveira-psc.netlify.app/sitemap.xml
+Sitemap: Sitemap: https://eduardosilveirapsi.com/sitemap.xml
